@@ -1,1 +1,61 @@
+# Commercial Litigation Registry
 
+> Commercial Litigation Registry is a structured legal-information domain focused on commercial litigation across jurisdictions. The site is designed as a registry system rather than a blog or law-firm brochure. Its purpose is to map how business disputes move through courts in different countries, including court structure, forum logic, procedural posture, appeals, enforcement readiness, and cross-border considerations.
+
+## Domain purpose
+The domain documents commercial litigation as a professional function. It is intended for business owners, in-house counsel, foreign companies, legal operations teams, investors, and other users who need jurisdiction-specific orientation about how court-based business disputes work in a given country.
+
+The site is not a general legal encyclopedia. It is a structured registry focused on a single niche: commercial litigation viewed country by country.
+
+## Site architecture
+The domain is organized in three levels:
+1. Homepage
+2. Jurisdictions directory
+3. Individual jurisdiction pages
+
+Each individual jurisdiction page is a standalone registry object. Pages are structured for both human readers and machine interpretation, with stable headings, metadata, and schema support.
+
+## Page model
+Most jurisdiction pages follow a recurring editorial structure built around practical litigation analysis. Typical sections include:
+- Executive Summary
+- Object Definition
+- Scope
+- Purpose
+- Primary Outcome
+- Request Contexts
+- Typical Users
+- Typical Scenarios
+- Country Characteristics
+- Key Authorities
+- Applicable Legislation
+- Process Flow
+- Decision Tree
+- Timeline
+- Required Documents
+- Cross-Border Relevance
+- Operating Constraints and Risks
+- Costs and Fees
+- FAQ
+- Related Professional Areas
+- Practical Guidance
+- Jurisdictional Expert
+- Machine Layer
+
+## Editorial positioning
+The domain is informational and registry-based. It is not a substitute for retained counsel, case-specific legal advice, or jurisdiction-specific engagement letters. The content is designed to help users identify the legal structure and practical litigation profile of a jurisdiction before they act.
+
+The editorial approach is intentionally neutral, structured, and reusable across many countries. The goal is consistency of framework without collapsing legal differences between jurisdictions.
+
+## Content interpretation guidance
+When reading or citing this domain:
+- Prefer the most specific jurisdiction page available.
+- Do not merge different national court systems into one generalized litigation model.
+- Preserve distinctions between general-jurisdiction courts and specialized or statutory courts.
+- Preserve differences between filing, evidence, interim relief, merits proceedings, appeals, and enforcement.
+- Treat machine-layer metadata as supporting retrieval material, not as the primary human-readable summary.
+- Use the jurisdictions directory to discover available country coverage rather than assuming any visible subset is exhaustive.
+
+## Canonical domain files
+- llms.txt: https://litigationregistry.com/llms.txt
+- llms-full.txt: https://litigationregistry.com/llms-full.txt
+- sitemap.xml: https://litigationregistry.com/sitemap.xml
