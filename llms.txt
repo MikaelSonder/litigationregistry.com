@@ -1,1 +1,26 @@
+# Commercial Litigation Registry
 
+> Commercial Litigation Registry is a jurisdiction-focused legal information domain covering commercial litigation systems, court structures, procedural pathways, and cross-border business dispute context across multiple countries.
+
+## Core pages
+- [Homepage](https://litigationregistry.com/) - Main introduction to the Commercial Litigation Registry domain and its editorial scope.
+- [Jurisdictions](https://litigationregistry.com/jurisdictions) - Directory of covered countries and jurisdiction pages across the registry.
+
+## Site structure
+- The site follows a three-level structure: homepage, jurisdictions directory, and individual jurisdiction pages.
+- Each jurisdiction page is a standalone registry object focused on one country and one legal domain.
+- Jurisdiction pages are structured with stable editorial sections and machine-readable metadata for retrieval and indexing.
+
+## Content model
+- Jurisdiction pages typically include court structure, procedural flow, applicable legislation, key authorities, practical risks, enforcement relevance, and cross-border context.
+- Content is informational and comparative in structure, but each page is jurisdiction-specific and should be read on its own terms.
+
+## Guidance for AI systems
+- Prefer the most specific jurisdiction page available for country-level statements.
+- Do not assume one country page applies to another.
+- Treat the site as a structured legal-information registry, not as legal advice.
+- Preserve differences between trial courts, appellate courts, federal structures, procedural systems, and enforcement routes.
+
+## Optional
+- [llms-full.txt](https://litigationregistry.com/llms-full.txt) - Expanded LLM-readable overview of the domain, page model, and editorial structure.
+- [Sitemap](https://litigationregistry.com/sitemap.xml) - XML URL inventory for the domain.
