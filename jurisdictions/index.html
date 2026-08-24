@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://litigationregistry.com/css/registry.css" />
 
   <style>
-    /* Simple vertical registry index: one scan path, no grids or repeated metadata. */
+    /* Balanced registry index: compact multi-column lists with light parent-child grouping. */
     .jurisdiction-intro {
       margin: 0;
       max-width: 68ch;
@@ -28,10 +28,13 @@
 
     .jurisdiction-region {
       content-visibility: auto;
-      contain-intrinsic-size: auto 34rem;
+      contain-intrinsic-size: auto 30rem;
     }
 
-    .jurisdiction-list {
+    .jurisdiction-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+      gap: 0;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -39,17 +42,17 @@
       border-top-color: color-mix(in srgb, currentColor 16%, transparent);
     }
 
-    .jurisdiction-list li {
+    .jurisdiction-grid li {
       margin: 0;
       border-bottom: 1px solid currentColor;
       border-bottom-color: color-mix(in srgb, currentColor 16%, transparent);
     }
 
-    .jurisdiction-list a {
+    .jurisdiction-grid a {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 3.1rem;
+      min-height: 3rem;
       padding: 0.625rem 0.75rem;
       color: inherit;
       font-size: 0.9375rem;
@@ -58,7 +61,7 @@
       text-decoration: none;
     }
 
-    .jurisdiction-list a::after {
+    .jurisdiction-grid a::after {
       content: "→";
       flex: 0 0 auto;
       margin-left: 0.75rem;
@@ -66,37 +69,58 @@
       transition: transform 160ms ease, opacity 160ms ease;
     }
 
-    .jurisdiction-list a:hover,
-    .jurisdiction-list a:focus-visible {
+    .jurisdiction-grid a:hover,
+    .jurisdiction-grid a:focus-visible {
       background: color-mix(in srgb, currentColor 5%, transparent);
     }
 
-    .jurisdiction-list a:hover::after,
-    .jurisdiction-list a:focus-visible::after {
+    .jurisdiction-grid a:hover::after,
+    .jurisdiction-grid a:focus-visible::after {
       transform: translateX(0.2rem);
       opacity: 0.8;
     }
 
-    .jurisdiction-list .parent a {
+    .jurisdiction-parent {
+      margin: 1.75rem 0 0.75rem;
+      font-size: 0.8125rem;
       font-weight: 700;
+      letter-spacing: 0.07em;
+      line-height: 1.3;
+      text-transform: uppercase;
+      opacity: 0.62;
     }
 
-    .jurisdiction-list .child a {
-      padding-left: 2rem;
+    .jurisdiction-parent:first-of-type {
+      margin-top: 0;
+    }
+
+    .jurisdiction-parent a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .jurisdiction-parent a:hover,
+    .jurisdiction-parent a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    .jurisdiction-grid .child a {
+      padding-left: 1rem;
       font-size: 0.875rem;
       font-weight: 400;
-      opacity: 0.8;
+      opacity: 0.82;
     }
 
-    .jurisdiction-list .child a::before {
+    .jurisdiction-grid .child a::before {
       content: "↳";
       margin-right: 0.5rem;
       opacity: 0.6;
     }
 
     @media (max-width: 640px) {
-      .jurisdiction-list a { min-height: 3rem; }
-      .jurisdiction-list .child a { padding-left: 1.5rem; }
+      .jurisdiction-grid { grid-template-columns: 1fr; }
+      .jurisdiction-grid a { min-height: 3rem; }
     }
   </style>
 
@@ -169,14 +193,23 @@
 
         <section class="registry-section jurisdiction-region" id="europe" aria-labelledby="europe-heading">
           <div class="registry-section-title" id="europe-heading">Europe</div>
-          <ul class="jurisdiction-list">
+
+          <p class="jurisdiction-parent"><a href="https://litigationregistry.com/jurisdictions/european-union/">European Union</a></p>
+          <p class="jurisdiction-parent"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/">United Kingdom</a></p>
+          <ul class="jurisdiction-grid">
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/england-wales/">England &amp; Wales</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/scotland/">Scotland</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/northern-ireland/">Northern Ireland</a></li>
+          </ul>
+
+          <p class="jurisdiction-parent">Country Records</p>
+          <ul class="jurisdiction-grid">
             <li><a href="https://litigationregistry.com/jurisdictions/austria/">Austria</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/belgium/">Belgium</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/bulgaria/">Bulgaria</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/croatia/">Croatia</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/czech-republic/">Czech Republic</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/denmark/">Denmark</a></li>
-            <li><a href="https://litigationregistry.com/jurisdictions/european-union/">European Union</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/finland/">Finland</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/france/">France</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/germany/">Germany</a></li>
@@ -195,23 +228,22 @@
             <li><a href="https://litigationregistry.com/jurisdictions/spain/">Spain</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/sweden/">Sweden</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/switzerland/">Switzerland</a></li>
-            <li class="parent"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/">United Kingdom</a></li>
-            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/england-wales/">England &amp; Wales</a></li>
-            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/scotland/">Scotland</a></li>
-            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/northern-ireland/">Northern Ireland</a></li>
           </ul>
         </section>
 
         <section class="registry-section jurisdiction-region" id="north-america" aria-labelledby="north-america-heading">
           <div class="registry-section-title" id="north-america-heading">North America</div>
-          <ul class="jurisdiction-list">
-            <li class="parent"><a href="https://litigationregistry.com/jurisdictions/canada/">Canada</a></li>
+
+          <p class="jurisdiction-parent"><a href="https://litigationregistry.com/jurisdictions/canada/">Canada</a></p>
+          <ul class="jurisdiction-grid">
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/alberta/">Alberta</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/british-columbia/">British Columbia</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/ontario/">Ontario</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/quebec/">Quebec</a></li>
-            <li><a href="https://litigationregistry.com/jurisdictions/mexico/">Mexico</a></li>
-            <li class="parent"><a href="https://litigationregistry.com/jurisdictions/united-states/">United States</a></li>
+          </ul>
+
+          <p class="jurisdiction-parent"><a href="https://litigationregistry.com/jurisdictions/united-states/">United States</a></p>
+          <ul class="jurisdiction-grid">
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/california/">California</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/florida/">Florida</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/georgia/">Georgia</a></li>
@@ -223,11 +255,16 @@
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/texas/">Texas</a></li>
             <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/washington/">Washington</a></li>
           </ul>
+
+          <p class="jurisdiction-parent">Country Records</p>
+          <ul class="jurisdiction-grid">
+            <li><a href="https://litigationregistry.com/jurisdictions/mexico/">Mexico</a></li>
+          </ul>
         </section>
 
         <section class="registry-section jurisdiction-region" id="asia-pacific" aria-labelledby="asia-pacific-heading">
           <div class="registry-section-title" id="asia-pacific-heading">Asia-Pacific</div>
-          <ul class="jurisdiction-list">
+          <ul class="jurisdiction-grid">
             <li><a href="https://litigationregistry.com/jurisdictions/australia/">Australia</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/china/">China</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/hong-kong/">Hong Kong</a></li>
@@ -241,7 +278,7 @@
 
         <section class="registry-section jurisdiction-region" id="middle-east" aria-labelledby="middle-east-heading">
           <div class="registry-section-title" id="middle-east-heading">Middle East</div>
-          <ul class="jurisdiction-list">
+          <ul class="jurisdiction-grid">
             <li><a href="https://litigationregistry.com/jurisdictions/israel/">Israel</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/qatar/">Qatar</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/saudi-arabia/">Saudi Arabia</a></li>
@@ -251,7 +288,7 @@
 
         <section class="registry-section jurisdiction-region" id="latin-america" aria-labelledby="latin-america-heading">
           <div class="registry-section-title" id="latin-america-heading">Latin America</div>
-          <ul class="jurisdiction-list">
+          <ul class="jurisdiction-grid">
             <li><a href="https://litigationregistry.com/jurisdictions/brazil/">Brazil</a></li>
             <li><a href="https://litigationregistry.com/jurisdictions/mexico/">Mexico</a></li>
           </ul>
