@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="index, follow" />
   <title>Jurisdictions | Commercial Litigation Registry</title>
-  <meta name="description" content="International jurisdiction index for Commercial Litigation Registry, covering commercial litigation records by country, legal system, state and province." />
+  <meta name="description" content="International jurisdiction index for Commercial Litigation Registry." />
   <link rel="canonical" href="https://litigationregistry.com/jurisdictions/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Jurisdictions | Commercial Litigation Registry" />
@@ -15,68 +15,152 @@
   <meta name="DC.title" content="Jurisdictions | Commercial Litigation Registry" />
   <meta name="DC.subject" content="Commercial Litigation jurisdictions international court systems business disputes" />
   <meta name="DC.language" content="en" />
-  <meta name="DC.type" content="Text" />
-  <meta name="DC.format" content="text/html" />
   <link rel="stylesheet" href="https://litigationregistry.com/css/registry.css" />
 
   <style>
-    /* Jurisdiction index: compact registry reading mode. */
-    .registry-index-intro {
-      max-width: 78ch;
+    /* Cognitive simplification: links are the index; repeated labels and tables are removed. */
+    .jurisdiction-intro {
+      margin: 0;
+      max-width: 68ch;
       font-size: 0.9375rem;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    .registry-table {
+    .jurisdiction-region {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 28rem;
+    }
+
+    .jurisdiction-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid currentColor;
+      border-top-color: color-mix(in srgb, currentColor 16%, transparent);
+    }
+
+    .jurisdiction-list li {
+      margin: 0;
+      border-bottom: 1px solid currentColor;
+      border-bottom-color: color-mix(in srgb, currentColor 16%, transparent);
+    }
+
+    .jurisdiction-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 3.1rem;
+      padding: 0.625rem 0.75rem;
+      color: inherit;
       font-size: 0.9375rem;
-      line-height: 1.4;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
     }
 
-    .registry-table th,
-    .registry-table td {
-      text-align: left;
-      vertical-align: middle;
-      padding-block: 0.625rem;
+    .jurisdiction-list a::after {
+      content: "→";
+      flex: 0 0 auto;
+      margin-left: 0.75rem;
+      opacity: 0.42;
+      transition: transform 160ms ease, opacity 160ms ease;
     }
 
-    .registry-table th {
-      white-space: nowrap;
-    }
-
-    .registry-table .parent-row td {
-      font-weight: 700;
+    .jurisdiction-list a:hover,
+    .jurisdiction-list a:focus-visible {
       background: color-mix(in srgb, currentColor 5%, transparent);
     }
 
-    .registry-table .sub-jurisdiction td:first-child {
-      padding-left: 2rem;
+    .jurisdiction-list a:hover::after,
+    .jurisdiction-list a:focus-visible::after {
+      transform: translateX(0.2rem);
+      opacity: 0.8;
     }
 
-    .registry-table .sub-jurisdiction td:first-child::before {
-      content: "↳";
-      display: inline-block;
-      margin-right: 0.5rem;
-      color: inherit;
-      opacity: 0.58;
+    .jurisdiction-system {
+      margin-top: 1.75rem;
     }
 
-    .registry-subgroup-title {
-      margin: 1.5rem 0 0.75rem;
-      font-size: 0.875rem;
+    .jurisdiction-system + .jurisdiction-system {
+      margin-top: 1.25rem;
+    }
+
+    .jurisdiction-system-title {
+      margin: 0 0 0.5rem;
+      font-size: 0.8125rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.07em;
+      line-height: 1.3;
       text-transform: uppercase;
-      opacity: 0.72;
+      opacity: 0.62;
+    }
+
+    .jurisdiction-tree {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid currentColor;
+      border-top-color: color-mix(in srgb, currentColor 16%, transparent);
+    }
+
+    .jurisdiction-tree li {
+      margin: 0;
+      border-bottom: 1px solid currentColor;
+      border-bottom-color: color-mix(in srgb, currentColor 16%, transparent);
+    }
+
+    .jurisdiction-tree a {
+      display: flex;
+      align-items: center;
+      min-height: 3.1rem;
+      padding: 0.625rem 0.75rem;
+      color: inherit;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .jurisdiction-tree a::after {
+      content: "→";
+      flex: 0 0 auto;
+      margin-left: auto;
+      padding-left: 0.75rem;
+      opacity: 0.42;
+      transition: transform 160ms ease, opacity 160ms ease;
+    }
+
+    .jurisdiction-tree a:hover,
+    .jurisdiction-tree a:focus-visible {
+      background: color-mix(in srgb, currentColor 5%, transparent);
+    }
+
+    .jurisdiction-tree a:hover::after,
+    .jurisdiction-tree a:focus-visible::after {
+      transform: translateX(0.2rem);
+      opacity: 0.8;
+    }
+
+    .jurisdiction-tree .child a {
+      padding-left: 2rem;
+      font-size: 0.875rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
+
+    .jurisdiction-tree .child a::before {
+      content: "↳";
+      margin-right: 0.5rem;
+      opacity: 0.6;
     }
 
     @media (max-width: 640px) {
-      .registry-table {
-        font-size: 0.875rem;
-      }
-
-      .registry-table .sub-jurisdiction td:first-child {
-        padding-left: 1.25rem;
-      }
+      .jurisdiction-list { grid-template-columns: 1fr; }
+      .jurisdiction-list a,
+      .jurisdiction-tree a { min-height: 3rem; }
     }
   </style>
 
@@ -89,7 +173,7 @@
         "@id": "https://litigationregistry.com/jurisdictions/#webpage",
         "url": "https://litigationregistry.com/jurisdictions/",
         "name": "Jurisdictions | Commercial Litigation Registry",
-        "description": "International index of commercial litigation jurisdiction records and selected sub-jurisdictions.",
+        "description": "International index of commercial litigation jurisdiction records.",
         "inLanguage": "en",
         "isPartOf": {"@id": "https://litigationregistry.com/#website"},
         "datePublished": "2026-08-24",
@@ -99,8 +183,7 @@
         "@type": "ItemList",
         "@id": "https://litigationregistry.com/jurisdictions/#itemlist",
         "name": "Commercial Litigation Registry Jurisdictions",
-        "description": "Jurisdiction records arranged by geographic region and legal-system structure.",
-        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "description": "Jurisdiction records arranged by region and legal-system structure.",
         "numberOfItems": 52
       }
     ]
@@ -144,135 +227,108 @@
 
     <main id="main-content" aria-label="Commercial Litigation Registry Jurisdictions">
       <article>
-        <section class="registry-section" id="overview" aria-labelledby="overview-heading">
-          <div class="registry-section-title" id="overview-heading">Index</div>
-          <p class="registry-index-intro">Select a country, legal system, state or province to access the relevant commercial litigation registry record.</p>
+        <section class="registry-section" aria-label="Index introduction">
+          <p class="jurisdiction-intro">Select a jurisdiction to access its commercial litigation record.</p>
         </section>
 
-        <section class="registry-section" id="europe" aria-labelledby="europe-heading">
+        <section class="registry-section jurisdiction-region" id="europe" aria-labelledby="europe-heading">
           <div class="registry-section-title" id="europe-heading">Europe</div>
 
-          <div class="registry-subgroup-title">European Systems</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th><th scope="col">Record Type</th></tr>
-            </thead>
-            <tbody>
-              <tr class="parent-row"><td>European Union</td><td><a href="https://litigationregistry.com/jurisdictions/european-union/">Commercial Litigation European Union</a></td><td>Cross-border framework</td></tr>
-              <tr class="parent-row"><td>United Kingdom</td><td><a href="https://litigationregistry.com/jurisdictions/united-kingdom/">Commercial Litigation United Kingdom</a></td><td>National overview</td></tr>
-              <tr class="sub-jurisdiction"><td>England &amp; Wales</td><td><a href="https://litigationregistry.com/jurisdictions/united-kingdom/england-wales/">Commercial Litigation England &amp; Wales</a></td><td>Legal-system record</td></tr>
-              <tr class="sub-jurisdiction"><td>Scotland</td><td><a href="https://litigationregistry.com/jurisdictions/united-kingdom/scotland/">Commercial Litigation Scotland</a></td><td>Legal-system record</td></tr>
-              <tr class="sub-jurisdiction"><td>Northern Ireland</td><td><a href="https://litigationregistry.com/jurisdictions/united-kingdom/northern-ireland/">Commercial Litigation Northern Ireland</a></td><td>Legal-system record</td></tr>
-            </tbody>
-          </table>
+          <div class="jurisdiction-system">
+            <p class="jurisdiction-system-title">European and UK systems</p>
+            <ul class="jurisdiction-tree">
+              <li><a href="https://litigationregistry.com/jurisdictions/european-union/">European Union</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/united-kingdom/">United Kingdom</a></li>
+              <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/england-wales/">England &amp; Wales</a></li>
+              <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/scotland/">Scotland</a></li>
+              <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-kingdom/northern-ireland/">Northern Ireland</a></li>
+            </ul>
+          </div>
 
-          <div class="registry-subgroup-title">Country Records</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Austria</td><td><a href="https://litigationregistry.com/jurisdictions/austria/">Commercial Litigation Austria</a></td></tr>
-              <tr><td>Belgium</td><td><a href="https://litigationregistry.com/jurisdictions/belgium/">Commercial Litigation Belgium</a></td></tr>
-              <tr><td>Bulgaria</td><td><a href="https://litigationregistry.com/jurisdictions/bulgaria/">Commercial Litigation Bulgaria</a></td></tr>
-              <tr><td>Croatia</td><td><a href="https://litigationregistry.com/jurisdictions/croatia/">Commercial Litigation Croatia</a></td></tr>
-              <tr><td>Czech Republic</td><td><a href="https://litigationregistry.com/jurisdictions/czech-republic/">Commercial Litigation Czech Republic</a></td></tr>
-              <tr><td>Denmark</td><td><a href="https://litigationregistry.com/jurisdictions/denmark/">Commercial Litigation Denmark</a></td></tr>
-              <tr><td>Finland</td><td><a href="https://litigationregistry.com/jurisdictions/finland/">Commercial Litigation Finland</a></td></tr>
-              <tr><td>France</td><td><a href="https://litigationregistry.com/jurisdictions/france/">Commercial Litigation France</a></td></tr>
-              <tr><td>Germany</td><td><a href="https://litigationregistry.com/jurisdictions/germany/">Commercial Litigation Germany</a></td></tr>
-              <tr><td>Greece</td><td><a href="https://litigationregistry.com/jurisdictions/greece/">Commercial Litigation Greece</a></td></tr>
-              <tr><td>Hungary</td><td><a href="https://litigationregistry.com/jurisdictions/hungary/">Commercial Litigation Hungary</a></td></tr>
-              <tr><td>Ireland</td><td><a href="https://litigationregistry.com/jurisdictions/ireland/">Commercial Litigation Ireland</a></td></tr>
-              <tr><td>Italy</td><td><a href="https://litigationregistry.com/jurisdictions/italy/">Commercial Litigation Italy</a></td></tr>
-              <tr><td>Luxembourg</td><td><a href="https://litigationregistry.com/jurisdictions/luxembourg/">Commercial Litigation Luxembourg</a></td></tr>
-              <tr><td>Netherlands</td><td><a href="https://litigationregistry.com/jurisdictions/netherlands/">Commercial Litigation Netherlands</a></td></tr>
-              <tr><td>Norway</td><td><a href="https://litigationregistry.com/jurisdictions/norway/">Commercial Litigation Norway</a></td></tr>
-              <tr><td>Poland</td><td><a href="https://litigationregistry.com/jurisdictions/poland/">Commercial Litigation Poland</a></td></tr>
-              <tr><td>Portugal</td><td><a href="https://litigationregistry.com/jurisdictions/portugal/">Commercial Litigation Portugal</a></td></tr>
-              <tr><td>Romania</td><td><a href="https://litigationregistry.com/jurisdictions/romania/">Commercial Litigation Romania</a></td></tr>
-              <tr><td>Slovakia</td><td><a href="https://litigationregistry.com/jurisdictions/slovakia/">Commercial Litigation Slovakia</a></td></tr>
-              <tr><td>Slovenia</td><td><a href="https://litigationregistry.com/jurisdictions/slovenia/">Commercial Litigation Slovenia</a></td></tr>
-              <tr><td>Spain</td><td><a href="https://litigationregistry.com/jurisdictions/spain/">Commercial Litigation Spain</a></td></tr>
-              <tr><td>Sweden</td><td><a href="https://litigationregistry.com/jurisdictions/sweden/">Commercial Litigation Sweden</a></td></tr>
-              <tr><td>Switzerland</td><td><a href="https://litigationregistry.com/jurisdictions/switzerland/">Commercial Litigation Switzerland</a></td></tr>
-            </tbody>
-          </table>
+          <div class="jurisdiction-system">
+            <p class="jurisdiction-system-title">Country records</p>
+            <ul class="jurisdiction-list">
+              <li><a href="https://litigationregistry.com/jurisdictions/austria/">Austria</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/belgium/">Belgium</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/bulgaria/">Bulgaria</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/croatia/">Croatia</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/czech-republic/">Czech Republic</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/denmark/">Denmark</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/finland/">Finland</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/france/">France</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/germany/">Germany</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/greece/">Greece</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/hungary/">Hungary</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/ireland/">Ireland</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/italy/">Italy</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/luxembourg/">Luxembourg</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/netherlands/">Netherlands</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/norway/">Norway</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/poland/">Poland</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/portugal/">Portugal</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/romania/">Romania</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/slovakia/">Slovakia</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/slovenia/">Slovenia</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/spain/">Spain</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/sweden/">Sweden</a></li>
+              <li><a href="https://litigationregistry.com/jurisdictions/switzerland/">Switzerland</a></li>
+            </ul>
+          </div>
         </section>
 
-        <section class="registry-section" id="north-america" aria-labelledby="north-america-heading">
+        <section class="registry-section jurisdiction-region" id="north-america" aria-labelledby="north-america-heading">
           <div class="registry-section-title" id="north-america-heading">North America</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th><th scope="col">Record Type</th></tr>
-            </thead>
-            <tbody>
-              <tr class="parent-row"><td>Canada</td><td><a href="https://litigationregistry.com/jurisdictions/canada/">Commercial Litigation Canada</a></td><td>National overview</td></tr>
-              <tr class="sub-jurisdiction"><td>Alberta</td><td><a href="https://litigationregistry.com/jurisdictions/canada/alberta/">Commercial Litigation Alberta</a></td><td>Provincial record</td></tr>
-              <tr class="sub-jurisdiction"><td>British Columbia</td><td><a href="https://litigationregistry.com/jurisdictions/canada/british-columbia/">Commercial Litigation British Columbia</a></td><td>Provincial record</td></tr>
-              <tr class="sub-jurisdiction"><td>Ontario</td><td><a href="https://litigationregistry.com/jurisdictions/canada/ontario/">Commercial Litigation Ontario</a></td><td>Provincial record</td></tr>
-              <tr class="sub-jurisdiction"><td>Quebec</td><td><a href="https://litigationregistry.com/jurisdictions/canada/quebec/">Commercial Litigation Quebec</a></td><td>Provincial record</td></tr>
-              <tr><td>Mexico</td><td><a href="https://litigationregistry.com/jurisdictions/mexico/">Commercial Litigation Mexico</a></td><td>Country record</td></tr>
-              <tr class="parent-row"><td>United States</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/">Commercial Litigation United States</a></td><td>National overview</td></tr>
-              <tr class="sub-jurisdiction"><td>California</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/california/">Commercial Litigation California</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Florida</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/florida/">Commercial Litigation Florida</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Georgia</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/georgia/">Commercial Litigation Georgia</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Illinois</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/illinois/">Commercial Litigation Illinois</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Massachusetts</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/massachusetts/">Commercial Litigation Massachusetts</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>New Jersey</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/new-jersey/">Commercial Litigation New Jersey</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>New York</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/new-york/">Commercial Litigation New York</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Pennsylvania</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/pennsylvania/">Commercial Litigation Pennsylvania</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Texas</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/texas/">Commercial Litigation Texas</a></td><td>State record</td></tr>
-              <tr class="sub-jurisdiction"><td>Washington</td><td><a href="https://litigationregistry.com/jurisdictions/united-states/washington/">Commercial Litigation Washington</a></td><td>State record</td></tr>
-            </tbody>
-          </table>
+          <ul class="jurisdiction-tree">
+            <li><a href="https://litigationregistry.com/jurisdictions/canada/">Canada</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/alberta/">Alberta</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/british-columbia/">British Columbia</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/ontario/">Ontario</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/canada/quebec/">Quebec</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/mexico/">Mexico</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/united-states/">United States</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/california/">California</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/florida/">Florida</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/georgia/">Georgia</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/illinois/">Illinois</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/massachusetts/">Massachusetts</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/new-jersey/">New Jersey</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/new-york/">New York</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/pennsylvania/">Pennsylvania</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/texas/">Texas</a></li>
+            <li class="child"><a href="https://litigationregistry.com/jurisdictions/united-states/washington/">Washington</a></li>
+          </ul>
         </section>
 
-        <section class="registry-section" id="asia-pacific" aria-labelledby="asia-pacific-heading">
+        <section class="registry-section jurisdiction-region" id="asia-pacific" aria-labelledby="asia-pacific-heading">
           <div class="registry-section-title" id="asia-pacific-heading">Asia-Pacific</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Australia</td><td><a href="https://litigationregistry.com/jurisdictions/australia/">Commercial Litigation Australia</a></td></tr>
-              <tr><td>China</td><td><a href="https://litigationregistry.com/jurisdictions/china/">Commercial Litigation China</a></td></tr>
-              <tr><td>Hong Kong</td><td><a href="https://litigationregistry.com/jurisdictions/hong-kong/">Commercial Litigation Hong Kong</a></td></tr>
-              <tr><td>India</td><td><a href="https://litigationregistry.com/jurisdictions/india/">Commercial Litigation India</a></td></tr>
-              <tr><td>Japan</td><td><a href="https://litigationregistry.com/jurisdictions/japan/">Commercial Litigation Japan</a></td></tr>
-              <tr><td>New Zealand</td><td><a href="https://litigationregistry.com/jurisdictions/new-zealand/">Commercial Litigation New Zealand</a></td></tr>
-              <tr><td>Singapore</td><td><a href="https://litigationregistry.com/jurisdictions/singapore/">Commercial Litigation Singapore</a></td></tr>
-              <tr><td>South Korea</td><td><a href="https://litigationregistry.com/jurisdictions/south-korea/">Commercial Litigation South Korea</a></td></tr>
-            </tbody>
-          </table>
+          <ul class="jurisdiction-list">
+            <li><a href="https://litigationregistry.com/jurisdictions/australia/">Australia</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/china/">China</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/hong-kong/">Hong Kong</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/india/">India</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/japan/">Japan</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/new-zealand/">New Zealand</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/singapore/">Singapore</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/south-korea/">South Korea</a></li>
+          </ul>
         </section>
 
-        <section class="registry-section" id="middle-east" aria-labelledby="middle-east-heading">
+        <section class="registry-section jurisdiction-region" id="middle-east" aria-labelledby="middle-east-heading">
           <div class="registry-section-title" id="middle-east-heading">Middle East</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Israel</td><td><a href="https://litigationregistry.com/jurisdictions/israel/">Commercial Litigation Israel</a></td></tr>
-              <tr><td>Qatar</td><td><a href="https://litigationregistry.com/jurisdictions/qatar/">Commercial Litigation Qatar</a></td></tr>
-              <tr><td>Saudi Arabia</td><td><a href="https://litigationregistry.com/jurisdictions/saudi-arabia/">Commercial Litigation Saudi Arabia</a></td></tr>
-              <tr><td>United Arab Emirates</td><td><a href="https://litigationregistry.com/jurisdictions/united-arab-emirates/">Commercial Litigation United Arab Emirates</a></td></tr>
-            </tbody>
-          </table>
+          <ul class="jurisdiction-list">
+            <li><a href="https://litigationregistry.com/jurisdictions/israel/">Israel</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/qatar/">Qatar</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/saudi-arabia/">Saudi Arabia</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/united-arab-emirates/">United Arab Emirates</a></li>
+          </ul>
         </section>
 
-        <section class="registry-section" id="latin-america" aria-labelledby="latin-america-heading">
+        <section class="registry-section jurisdiction-region" id="latin-america" aria-labelledby="latin-america-heading">
           <div class="registry-section-title" id="latin-america-heading">Latin America</div>
-          <table class="registry-table">
-            <thead>
-              <tr><th scope="col">Jurisdiction</th><th scope="col">Registry Record</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Brazil</td><td><a href="https://litigationregistry.com/jurisdictions/brazil/">Commercial Litigation Brazil</a></td></tr>
-              <tr><td>Mexico</td><td><a href="https://litigationregistry.com/jurisdictions/mexico/">Commercial Litigation Mexico</a></td></tr>
-            </tbody>
-          </table>
+          <ul class="jurisdiction-list">
+            <li><a href="https://litigationregistry.com/jurisdictions/brazil/">Brazil</a></li>
+            <li><a href="https://litigationregistry.com/jurisdictions/mexico/">Mexico</a></li>
+          </ul>
         </section>
       </article>
     </main>
@@ -283,7 +339,6 @@
           <span class="registry-footer-brand">Commercial Litigation Registry</span>
           <span>END OF RECORD</span>
           <span>Index Scope......................International Jurisdiction Listing</span>
-          <span>Coverage.........................National, supranational and selected sub-jurisdiction records</span>
           <span>Record Integrity.................ACTIVE</span>
         </div>
         <nav class="registry-footer-nav" aria-label="Footer navigation">
